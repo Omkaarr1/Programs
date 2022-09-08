@@ -1,0 +1,9 @@
+{
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.associations": {
+        "*.tcc": "cpp",
+        "fstream": "cpp",
+        "EVALUATION_OF_PREFIX.C": "cpp",
+        "new": "cpp"
+    }
+}
