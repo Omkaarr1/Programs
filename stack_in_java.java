@@ -6,8 +6,6 @@ class stack_in_java
     {
         Scanner in = new Scanner(System.in);
         Stack<Integer> stack = new Stack<Integer>();
-
-
         int c,item;
 
         do 
