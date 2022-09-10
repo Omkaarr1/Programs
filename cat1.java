@@ -4,43 +4,51 @@ public class cat1
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
-        int n,k,temp,i,j;
+        int dec=0;
+        String hex;
+        StringBuffer temphex;
+        char ch;
 
-        System.out.println("Enter Length of Array -->");
-        n=in.nextInt();
+        System.out.println("Enter the HexaDecimal Number -->");
+        hex = in.next().toUpperCase();
+        temphex=new StringBuffer(hex);
 
-        int a[]=new int[n];
+        temphex=temphex.reverse();
+        hex = new String(temphex);
 
-        System.out.println("Enter Shift -->");
-        k=in.nextInt();
-
-        System.out.println("Enter Elements of the Array -->");
-
-        for(int i=0;i<n;i++)
-        a[i] = in.nextInt();
-
-        // 1 2 3 4 5 6 7 8 9
-        // 7 8 9 4 5 6 1 2 3
-        // 7 8 9 1 2 3 4 5 6
-
-        for(i=n-1,j=0;j<k;j++,i--)
+        for(int i=0;i<hex.length();i++)
         {
-            temp = a[j];
-            a[j] = a[i];
-            a[i]=a[j];
+            ch=hex.charAt(i);
+
+            if(Character.isDigit(ch))
+            dec += (int) Math.pow(16,i) * Integer.parseInt(ch+"");
+            else if(Character.isLetter(ch))
+            {
+                if(ch == 'A')
+                dec += (int) Math.pow(16,i) * 10;
+                else
+                if(ch == 'B')
+                dec += (int) Math.pow(16,i) * 11;
+                else 
+                if(ch == 'C')
+                dec += (int) Math.pow(16,i) * 12;
+                else 
+                if(ch == 'D')
+                dec += (int) Math.pow(16,i) * 13;
+                else 
+                if(ch == 'E')
+                dec += (int) Math.pow(16,i) * 14;
+                else
+                if(ch == 'F')
+                dec += (int) Math.pow(16,i) * 15;
+            }
+            else
+            {
+                System.out.println("Not a Valid HexaDecimal Number!");
+                return;
+            }
         }
 
-        i=j;
-        j+=k;
-
-        for(;i<n;i++)
-        {
-            temp=a[i];
-        }
-
-
-
-        
-
+        System.out.println("The Decimal Value for the Gvien HexaDecimal Number is --> "+(int)dec);
     }
 }
