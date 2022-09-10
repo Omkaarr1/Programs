@@ -1,5 +1,5 @@
 import java.util.*;
-public class cat1 
+public class HexaDecimal_To_Decimal 
 {
     public static void main(String[] args) 
     {
