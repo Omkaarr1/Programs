@@ -1,43 +1,43 @@
-class A 
-{
-    A()
-    {
-        System.out.println("This is A");
-    }
-}
+import java.io.*;
+import java.util.*;
 
-class B extends A
+class Employee 
 {
-    B()
+    String IdentityNo;
+    String name;
+    int deptcode;
+    String designation;
+    int salary;
+    String DOJ;
+    Scanner sc = new Scanner(System.in);
+
+    void read() 
     {
-        System.out.println("This is B");
+        IdentityNo = sc.next();
+        name = sc.next();
+        deptcode = sc.nextInt();
+        designation = sc.next();
+        salary = sc.nextInt();
+        DOJ = sc.next();
     }
 
-    B(int a)
+    void display() 
     {
-        System.out.println(a);
+        System.out.println(IdentityNo + "\n" + name + "\n" + deptcode + "\n" + designation + "\n" + salary + "\n" + DOJ);
     }
-}
-
- class C extends B
-{
-    C()
-    {
-        System.out.println("This is C");
-    } 
 }
 
 public class practice
 {
     public static void main(String[] args) 
     {
-        A a;
-        
-        a = new A();
-        System.out.println();
-        a = new B();
-        System.out.println();
-        a = new C();
+        Scanner sc = new Scanner(System.in);
+        int i;
+        int n = sc.nextInt();
+        Employee[] e = new Employee[n];
+        for (i = 0; i < n; i++) {
+            e[i].read();
+            e[i].display();
+        }
     }
 }
-
