@@ -3,7 +3,8 @@ public class basic_calculator
 {
     public static void main(String[] args) 
     {
-        try (Scanner in = new Scanner(System.in)) {
+        try (Scanner in = new Scanner(System.in)) 
+        {
             int n;
 
             System.out.println("Enter a Number:");
