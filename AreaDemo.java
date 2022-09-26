@@ -11,9 +11,10 @@ class Area
         System.out.println("Enter Breath -->");
         b = in.nextDouble();
     }
-    double getArea()
+
+    void getArea()
     {
-        return l*b;
+        System.out.println("Area --> "+l*b);
     }
 }
 
@@ -23,6 +24,6 @@ class AreaDemo
     {
         Area a = new Area();
         a.setDim();
-        System.out.println("Area --> "+a.getArea());
+        a.getArea();
     }
 }

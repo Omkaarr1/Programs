@@ -33,7 +33,10 @@ class ComplexArithmetic
 
     void add()
     {
+        if(b1+b2 > 0)
         System.out.println("Addition --> "+(a1+a2)+" + i"+(b1+b2));
+        else
+        System.out.println("Addition --> "+(a1+a2)+" - i"+(b1+b2)*-1);
     }
 
     void sub()
@@ -43,7 +46,24 @@ class ComplexArithmetic
 
     void mul()
     {
-        System.out.println("Multiplication --> "+(a1*a2)+" + i"+(b1*b2));
+        if(a1>0 && a2>0)
+        {
+            if(b1 > 0 && b2 > 0)
+            System.out.println("Multiplication --> "+(a1*a2)+" + i"+(b1*b2));
+            else if(b1<0 && b2<0)
+            System.out.println("Multiplication --> "+(a1*a2)+" - i"+(b1*b2));
+            else
+            System.out.println("Multiplication --> "+(a1*a2)+" - i"+(b1*b2*-1));
+        }
+        else
+        {
+            if(b1 > 0 && b2 > 0)
+            System.out.println("Multiplication --> "+(a1*a2)+" + i"+(b1*b2));
+            else if(b1<0 && b2<0)
+            System.out.println("Multiplication --> "+(a1*a2)+" - i"+(b1*b2));
+            else
+            System.out.println("Multiplication --> "+(a1*a2)+" - i"+(b1*b2*-1));
+        }
     }
 }
 
