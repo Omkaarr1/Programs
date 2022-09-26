@@ -1,8 +1,11 @@
-/*Create a class Employee(Identity number, name, department code, designation,
-salary, DOJ) and perform the following operations for ‘N’ Employee (Use array of
-objects)
+/*Create a class Employee (Identity number, name, department code, address,
+designation, salary, DOJ, DOB) and perform the following operations for ‘N’
+Employee (Use array of objects)
 a. Reading the details.
-b. Display details of employee under a particular cadre */
+b. Displaying the full details of a particular employee.
+c. Employees of “XYZ” department.
+d. The Senior most employee.
+ */
 
 import java.util.*;
 class Employe 
@@ -27,46 +30,19 @@ class Employe
         this.DepartmentCode=DepartmentCode;
         this.IDNumber=IDNumber;
     }
-
-    void display()
-    {
-        System.out.println("Name -->"+Name);
-        System.out.println("Designation -->"+Designation);
-        System.out.println("Date of Joining -->"+DOJ);
-        System.out.println("Salary -->"+Salary);
-        System.out.println("Department Code -->"+DepartmentCode);
-        System.out.println("ID Number -->"+IDNumber);
-    }
-
-    void maxOfEmployee(Employe a[])
-    {
-        double max;
-        int index=0;
-
-        max = a[0].Salary;
-
-        for(int i=0;i<a.length;i++)
-        {
-            if(a[i].Salary>max)
-            {
-                max=a[i].Salary;
-                index = i;
-            }
-        }
-
-        a[index].display();
-    }
 }
 
 class Employee 
 {
     public static void main(String[] args) 
     {
-        int n;
+        int n,i;
         Scanner in = new Scanner(System.in);
         String Name,Designation,DOJ;
         double Salary;
         int DepartmentCode,IDNumber;
+        String display_using_name;
+        int display_using_department_code,index_of_senior_most_employee=0,max;
 
         System.out.println("Enter the Number of Employee's -->");
         n=in.nextInt();
@@ -74,7 +50,7 @@ class Employee
         Employe a[]=new Employe[n];
 
         System.out.println("Enter the Details -->");
-        for(int i=0;i<n;i++)
+        for(i=0;i<n;i++)
         {
             System.out.println("Enter Name -->");
             in.nextLine();
@@ -99,10 +75,57 @@ class Employee
 
             a[i]=new Employe(Name, Designation, DOJ, Salary, DepartmentCode, IDNumber);
         }
+        
+        in.nextLine();
+        
+        System.out.println("Enter Name of Employee to Display Full Details -->");
+        display_using_name=in.nextLine();
 
-        System.out.println("Employee with Highest Salary -->");
-        a[0].maxOfEmployee(a);
+        for(i=0;i<n;i++)
+        if(a[i].Name.equals(display_using_name))
+        break;
+
+        if(i!=n)
+        display(a,i);
+        else
+        System.out.println("Employee NOT Found");
+
+        System.out.println("Enter Depeartment Code to Search Employee -->");
+        display_using_department_code=in.nextInt();
+
+        for(i=0;i<n;i++)
+        if(a[i].DepartmentCode == display_using_department_code)
+        break;
+
+        if(i!=n)
+        display(a,i);
+        else
+        System.out.println("Employee NOT Found");
+
+        max=Integer.parseInt(a[0].DOJ.substring(6));
+
+        for(i=0;i<n;i++)
+        {
+            if(max<Integer.parseInt(a[i].DOJ.substring(6)))
+            {
+                max=Integer.parseInt(a[i].DOJ.substring(6));
+                index_of_senior_most_employee=i;
+            }
+        }
+
+        System.out.println("Details of Senior Most Employee -->");
+        display(a,index_of_senior_most_employee);
 
         in.close();
     }   
+
+    static void display(Employe[] A,int index)
+    {
+        System.out.println("Name -->"+A[index].Name);
+        System.out.println("Designation -->"+A[index].Designation);
+        System.out.println("Date of Joining -->"+A[index].DOJ);
+        System.out.println("Salary -->"+A[index].Salary);
+        System.out.println("Department Code -->"+A[index].DepartmentCode);
+        System.out.println("ID Number -->"+A[index].IDNumber);
+    }
 }
