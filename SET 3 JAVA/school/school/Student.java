@@ -1,27 +1,22 @@
-
+package school;
 /* STUDENT CLASS */
 
 public class Student extends Person
 {
     char Grade;
 
-    Student()
+    public Student()
     {
         Grade='\0';
     }
 
-    Student(char Grade)
-    {
-        this.Grade=Grade;
-    }
-
-    void displayStudent()
+    public void displayStudent()
     {
         display();
         System.out.println("Grade -->"+Grade);
     }
 
-    void inputStudent()
+    public void inputStudent()
     {
         input();
         System.out.println("Enter Grade -->");

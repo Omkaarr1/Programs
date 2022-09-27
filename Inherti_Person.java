@@ -1,3 +1,5 @@
+import school.Student;
+import school.Teacher;
 
 /* MAIN CLASS */
 

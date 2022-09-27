@@ -4,10 +4,8 @@ using namespace std;
 
 int main()
 {
-    int M,N,mkdir1=0,mkdir2=0,i1,i2;
-    char ch='/';
-    size_t found;
-    string root="",replace="";
+    int M,N,mkdir1=0,mkdir2=0;
+    string a="",b="";
 
     cout<<"Enter Value of N -->\n";
     cin>>N;
@@ -18,7 +16,7 @@ int main()
     string  APDir[N];
     string NDir[M];
     string NDir2[M];
-    int MkDir1[M];
+    int MkDir1[M],l;
     
     if(N!=0)
     for (int i = 0; i < N; i++)
@@ -27,12 +25,6 @@ int main()
     if(M!=0)
     for (int i = 0; i < M; i++)
     cin>>NDir[i];
-    
-    NDir2[0]=NDir[0];
 
-    for(int i=0,j=0;i<M-1;i++)
-    {
-
-    }
    return 0;
 }

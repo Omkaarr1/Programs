@@ -1,27 +1,22 @@
-
+package school;
 /* TEACHER CLASS */
 
 public class Teacher extends Person
 {
     double Salary;
 
-    Teacher()
+    public Teacher()
     {
         Salary=0.0;
     }
 
-    Teacher(double Salary)
-    {
-        this.Salary=Salary;
-    }
-
-    void displayTeacher()
+    public void displayTeacher()
     {
         display();
         System.out.println("Salary -->"+Salary);
     }
 
-    void inputTeacher()
+    public void inputTeacher()
     {
         input();
 
