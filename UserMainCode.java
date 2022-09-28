@@ -1,36 +1,42 @@
+
+//INCREASING STRING CLASS
+
 import java.util.*;
-import java.io.*;
-
-class UserMainCode
+class IncreasingString implements Increasing
 {
-
-    public static void main(String[] args)
+    String N;
+    
+    IncreasingString()
     {
-       Scanner in = new Scanner(System.in);
-
-       int Length = in.nextInt();
-
-       int count = in.nextInt();
-
-       int[][] array = new int[count][2];
-
-       Map<Integer, Integer> visibility = new HashMap<>();
-
-       for(int i=0;i<count;i++) 
-       {
-           array[i][0] = in.nextInt();
-           array[i][1] = in.nextInt();
-           for(int j=array[i][0];j<array[i][0]+array[i][1];j++)
-           visibility.put(j, i);   
-       }
-
-       Set<Integer> clothesRemaining = new HashSet<>();
-
-       for(int key : visibility.keySet()) 
-       clothesRemaining.add(visibility.get(key));
-
-       System.out.println(clothesRemaining.size());
-
-       in.close();
-     }
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Enter the String -->");
+        N = in.nextLine();
+    }
+    
+    public void isIncreasing()
+    {
+        int flag=0;
+        
+        N.toUpperCase();
+        
+        for(int i=0;i<N.length()-1;i++)
+        if(N.charAt(i)>N.charAt(i+1))
+        {
+            flag=1;
+            break;
+        }
+        
+        if(flag == 0)
+        System.out.println("Increasing String");
+        else
+        System.out.println("Not a Increasing String");
+    }
+    
+    public static void main(String args[])
+    {
+        IncreasingString IS = new IncreasingString();
+        
+        IS.isIncreasing();
+    }
 }
