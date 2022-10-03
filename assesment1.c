@@ -1,304 +1,215 @@
-#include<stdlib.h>
-#include<string.h>
 #include<stdio.h>
-static int countdelete=0;
-static int counthead=0;
-static int count=0;
-struct Student
-{
- char stud_name[100];
- char regno[100];
- int mark1;
- int mark2;
- int mark3;
- float average;
- char grade;
- struct Student *next;
-};
-struct Student *head=NULL;
-struct StudentList1
-{
- char stud_name[100];
- char regno[100];
- int mark1;
- int mark2;
- int mark3;
- float average;
- char grade;
- struct StudentList1 *next;
-};
-struct StudentList1 *head1=NULL;
+#include<malloc.h>
+#include<string.h>
+#include<stdbool.h>
 
-struct StudentList2
+struct node 
 {
- char stud_name[100];
- char regno[100];
- int mark1;
- int mark2;
- int mark3;
- float average;
- char grade;
- struct StudentList2 *next;
+	char stud_name[60];
+	char reg_num[10];
+	int mark1,mark2,mark3,total;
+	float average;
+	char grade;
+	struct node *next;
 };
-struct StudentList2 *head2=NULL;
 
-struct Student *temp;
-struct Student *tail;
+struct node *nw,*temp,*head,*tempcheck,*listabove90,*tempdelition;
+bool check(char*);
+int counthead,countdeletitation;
+void insert();
+bool check(char*);
+void display(struct node *);
+void displayFromBegining();
+void displayFromEnd();
+void studentsAbove90();
+void printNewList(struct node*);
 
-void insert( char* name, char* reg, int m1,int m2,int m3,float avg,char gd,int c)
+void insert()
 {
- 
- struct Student *s1 = (struct Student *) malloc(sizeof(struct Student));
- strcpy(s1->stud_name, name);
- strcpy(s1->regno, reg);
- s1->mark1=m1;
- s1->mark2=m2;
- s1->mark3=m3;
- s1->average=avg;
- s1->grade=gd;
- 
- 		if(head==NULL)
-     	{
-		head=s1;
-		tail=s1;
-		s1->next = head;
-		printf("first node inserted\n");
-        }
-        else
-        {
-        	if(c%2==0)
-        	{
-        	s1->next = head;
-            temp=head;
-            head = s1;
-            tail->next=head;
-			}
-			else if(c%2!=0)
-			{
-				temp=head;
-				while(temp->next!=head)
-				{
-					temp=temp->next;
-				}
-				temp->next=s1;
-				s1->next=head;
-				tail->next=s1;
-                tail=s1;
-			}
-		}
-}
-void createList1()
-{
-	struct Student *sl=head;
-	struct StudentList1 *l=head1;
-	struct StudentList1 *ptr;
-	do
+	char stud_name[60];
+	char reg_num[10];
+	int mark1,mark2,mark3,total;
+	float average;
+	char grade;
+	
+	printf("Enter Student Name -->\n");
+	scanf("%s",stud_name);
+	
+	printf("Enter Register Number -->\n");
+	scanf("%s",reg_num);
+
+	printf("Enter Mark 1 -->\n");
+	scanf("%i",&mark1);
+
+	printf("Enter Mark 2 -->\n");
+	scanf("%i",&mark2);
+	
+	printf("Enter Mark 3 -->\n");
+	scanf("%i",&mark3);
+
+	average = (mark1+mark2+mark3)/3;
+
+	if(average > 90)
+	grade = 'S';
+	else if(average > 80 && average <= 90)
+	grade = 'A';
+	else if(average > 70 && average <= 80)
+	grade = 'B';
+	else if(average > 60 && average <= 70)
+	grade = 'C';
+	else if(average > 50 && average <= 60)
+	grade = 'D';
+	else
+	grade = 'F';
+
+	if(nw->mark1 == -1)
 	{
-		if(sl->mark1>90 && sl->mark2>90 && sl->mark3>90)
+		strcpy(nw->stud_name,stud_name);
+		strcpy(nw->reg_num,reg_num);
+		nw->mark1=mark1;
+		nw->mark2=mark2;
+		nw->mark3=mark3;
+		nw->average=average;
+		nw->grade=grade;
+		nw->next=NULL;
+	}
+	else 
+	{
+		temp=nw;
+		nw = (struct node *)malloc(sizeof(struct node));
+
+		if(check(reg_num))
 		{
-			ptr=(struct StudentList1*)malloc(sizeof(struct StudentList1));
-            strcpy(ptr->stud_name,sl->stud_name);
-            strcpy(ptr->regno,sl->regno);
-            ptr->mark1=sl->mark1;
-            ptr->mark2=sl->mark2;
-            ptr->mark3=sl->mark3;
-            ptr->average=sl->average;
-            ptr->grade=sl->grade;
-            if(head1==NULL)
-	        {
-		        head1=ptr;
-		        ptr->next = head1;
-            }
-            else
-            {
-            	l=head1;
-            	while(l->next!=head1)
-            	{
-     	            l=l->next;
-	        	}
-		        l->next=ptr;
-		        ptr->next = head1;
-	        }	
+			printf("Record Already Found!!\n");
+			return;
 		}
-		sl=sl->next;
-	}while(sl!=head);
+
+		strcpy(nw->stud_name,stud_name);
+		strcpy(nw->reg_num,reg_num);
+		nw->mark1=mark1;
+		nw->mark2=mark2;
+		nw->mark3=mark3;
+		nw->average=average;
+		nw->grade=grade;
+		nw->next=NULL;
+		temp->next=nw;
+	}
 }
 
-void createList2()
+bool check(char *stud_name)
 {
-	struct Student *sl2=head;
-	struct Student *sl3=head;
-	struct StudentList2 *l2=head2;
-	struct StudentList2 *ptr;
-	do
+	tempcheck=head;
+
+	for(;tempcheck!=NULL;tempcheck=tempcheck->next)
+	if(!strcmp(stud_name,tempcheck->reg_num))
+	return true;
+
+	return false;
+}
+
+void display(struct node *temp)
+{
+	printf("Name --> %s\n",temp->stud_name);
+	printf("Register Number --> %s\n",temp->reg_num);
+	printf("Mark 1 --> %i\n",temp->mark1);
+	printf("Mark 2 --> %i\n",temp->mark2);
+	printf("Mark 3 --> %i\n",temp->mark3);
+	printf("Average --> %f\n",temp->average);
+	printf("Grade --> %c\n",temp->grade);
+}
+
+void displayFromBigining()
+{
+	temp=head;
+
+	for(;temp!=NULL;temp=temp->next)
+	display(temp);
+}
+
+void displayFromEnd()
+{
+	int count=0;
+	
+	for(temp=head;temp!=NULL;temp=temp->next,count++);
+
+	for(int i=0;i<count;i++)
 	{
-		if(sl2->mark1<40 && sl2->mark2<40 && sl2->mark3<40)
+		temp=head;
+
+		for(int j=0;j<count-i;j++,temp=temp->next);
+		display(temp);
+	}
+}
+
+void studentsAbove90()
+{
+	temp=head;
+
+	int flag=0;
+	listabove90 = (struct node *)malloc(sizeof(listabove90));
+
+	for(;temp!=NULL;temp=temp->next)
+	{
+		if(flag == 0 && temp->average>90)
 		{
-			ptr=(struct StudentList2*)malloc(sizeof(struct StudentList2));
-            strcpy(ptr->stud_name,sl2->stud_name);
-            strcpy(ptr->regno,sl2->regno);
-            ptr->mark1=sl2->mark1;
-            ptr->mark2=sl2->mark2;
-            ptr->mark3=sl2->mark3;
-            ptr->average=sl2->average;
-            ptr->grade=sl2->grade;
-            if(head2==NULL)
-	        {
-		        head2=ptr;
-		        ptr->next = head2;
-            }
-            else
-            {
-            	l2=head2;
-            	while(l2->next!=head2)
-            	{
-     	            l2=l2->next;
-	        	}
-		        l2->next=ptr;
-		        ptr->next = head2;
-	        }
+			listabove90 = temp;
+			listabove90->next=NULL;
 			
-			if(sl2==sl3)
-			{
- 	            countdelete++;
-                head = head->next;
-                free(sl2);
-                sl2=sl3;
-            }
-            else
-			{
-                sl3->next = sl2->next;
-                free(sl2);
-                sl2=sl3;
-            }
-            printf("Record Successfully Deleted !!!\n");
-            return;
 		}
-		sl3=sl2;
-		sl2=sl2->next;
-	}while(sl2!=head);
+		else
+		{
+			tempcheck=listabove90;
+			listabove90 = (struct node *)malloc(sizeof(listabove90));
+			tempcheck->next=listabove90;
+			listabove90->next=NULL;
+		}
+	}
+
+	printNewList(listabove90);
+	printf("\n\n\n");
+	displayFromBigining();
 }
 
 
-void display()
+void printNewList(struct node *listabove90)
 {
-struct Student * temps = head;
-    if (head==NULL)
-        printf("\nList is empty\n");
-    else 
-	{
-        do {
-             printf("Registration no. %s\n", temps->regno);
-             printf("Name: %s\n", temps->stud_name);
-             printf("Mark1 %d\n", temps->mark1);
-             printf("Mark2 %d\n", temps->mark2);
-             printf("Mark3 %d\n", temps->mark3);
-             printf("Average %f\n", temps->average);
-             printf("Grade %c\n",temps->grade);
-            temps = temps->next;
-        } while (temps != head);
-    }
-}
-void display1()
-{
-struct StudentList1 *te = head1;
-    if (head1==NULL)
-        printf("\nList is empty\n");
-    else 
-	{
-        do {
-             printf("Registration no. %s\n", te->regno);
-             printf("Name: %s\n", te->stud_name);
-             printf("Mark1 %d\n", te->mark1);
-             printf("Mark2 %d\n", te->mark2);
-             printf("Mark3 %d\n", te->mark3);
-             printf("Average %f\n", te->average);
-             printf("Grade %c\n",te->grade);
-            te = te->next;
-        } while (te != head1);
-    }
-}
+	temp=listabove90;
 
-void display2()
-{
-struct StudentList2 *te2 = head2;
-    if (head2==NULL)
-        printf("\nList is empty\n");
-    else 
-	{
-        do {
-             printf("Registration no. %s\n", te2->regno);
-             printf("Name: %s\n", te2->stud_name);
-             printf("Mark1 %d\n", te2->mark1);
-             printf("Mark2 %d\n", te2->mark2);
-             printf("Mark3 %d\n", te2->mark3);
-             printf("Average %f\n", te2->average);
-             printf("Grade %c\n",te2->grade);
-            te2 = te2->next;
-        } while (te2 != head2);
-    }
+	for(;temp!=NULL;temp=temp->next)
+	display(temp);
 }
 
 int main()
 {
- head = NULL;
- int choice;
- char name[100];
- char regno[100];
- int mark1,mark2,mark3;
- float average;
- char grade;
- printf("1. To insert student details\n2. To display student details\n3. To delete student details\n4. To display student details above 90 \n5. To print reverse\n6. To print number of times head is changed during insertion\n7. To print number of times head is changed during deletion");
- do 
- {
- printf("\nEnter Choice: ");
- scanf("%d", &choice);
- switch (choice)
- {
- case 1:
- printf("Enter mark1: ");
- scanf("%d", &mark1);
- printf("Enter mark2: ");
- scanf("%d", &mark2);
- printf("Enter mark3: ");
- scanf("%d", &mark3);
- printf("Enter name: ");
- scanf("%s", name);
- printf("Enter register number ");
- scanf("%s", regno);
- average=(mark1+mark2+mark3)/3.0;
- if(average>=90 && average<=100)
- grade='S';
- else if(average>=80 && average<90)
- grade='A';
-else if(average>=70 && average<80)
- grade='B';
- else if(average>=60 && average<70)
- grade='C';
- else if(average>=50 && average<60)
- grade='D';
- else if(average>=40 && average<50)
- grade='E';
-else
-grade='F';
-count++;
- insert(name, regno, mark1,mark2,mark3,average,grade,count);
- break;
- case 2:
- 	display();
- 	break;
-case 3:
- 	createList1();
- 	display1();
- 	break;
-case 4:
- 	createList2();
- 	display2();
- 	printf("Actual linklist is:\n");
- 	display();
- 	break;
- default:
- printf("Wrong choice\n");
- }
- } while (choice != 0);
+	int choice=-1;
+
+	nw = (struct node *)malloc(sizeof(struct node));
+	head=nw;
+	nw->next=NULL;
+	nw->mark1=-1;
+
+	do
+	{
+		printf("Enter 1 to Insert Node -->\n");
+		printf("Enter 2 to Display From Bigning -->\n");
+		printf("Enter 3 to Display From End -->\n");
+		printf("Enter 4 to Display Student Abouve 90 -->\n");
+		scanf("%i",&choice);
+
+		switch (choice)
+		{
+		case 1:
+		insert();
+		break;
+		case 2:
+		displayFromBigining();
+		break;
+		case 3:
+		displayFromEnd();
+		break;
+		case 4:
+		studentsAbove90();
+		break;
+		}
+	} while (choice!=0);
 }

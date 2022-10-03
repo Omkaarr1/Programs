@@ -4,6 +4,7 @@
         "*.tcc": "cpp",
         "fstream": "cpp",
         "EVALUATION_OF_PREFIX.C": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "iostream": "cpp"
     }
 }

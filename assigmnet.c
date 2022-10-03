@@ -1,107 +1,270 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
+
+int counti = 0;
+int countd = 0;
+
+int s = 0;
+int a = 0;
+int b = 0;
+int c = 0;
+int d = 0;
+int e = 0;
+int f = 0;
+int n = 0;
 
 struct student
 {
-    char stud_name[100];
-    char reg_num[100];
-    int mark1;
-    int mark2;
-    int mark3;
+    struct student *prev;
+    char stud_name[60];
+    char reg[10];
+    int mark1, mark2, mark3;
     int total;
+    float avg;
+    char grade;
     struct student *next;
-    float average;
-};
-struct student *head;
 
-int addNewNode();
-int readCurrentNode();
-int main()
-{
-    int choice = 0;
-    while (choice != 9)
-    {
-        printf("\n\n****Main Menu****\n");
-        printf("\nChoose one option from the following list ...\n");
-        printf("\n===============================================\n");
-        printf("\n1.Add new Node \n2.Read Current Nodes\n");
-        printf("\nEnter your choice?\n");
-        scanf("\n%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            addNewNode();
-            break;
-        case 2:
-            readCurrentNode();
-            break;
-        default:
-            printf("Please enter valid choice..");
-        }
-    }
-}
+} * head, *ptr, *check, *p1, *p2, *p;
 
-int addNewNode()
+void insert()
 {
-    struct student *s1, *temp;
-    char name[100];
-    char reg[100];
+    struct student *newnode;
+
+    newnode = (struct student *)malloc(sizeof(struct student));
+    char s1[20], s2[20];
+
+    printf("Enter Student Name-");
+    scanf("%s", s1);
+    strcpy(newnode->stud_name, s1);
+
+    printf("Enter Reg. No.-");
+    scanf("%s", s2);
+    strcpy(newnode->reg, s2);
+
     int m1, m2, m3;
-    int flag = 0;
-    s1 = (struct student *)malloc(sizeof(struct student));
-    if (s1 == NULL)
+    printf("Enter Marks 1-");
+    scanf("%d", &m1);
+    newnode->mark1 = m1;
+
+    printf("Enter Marks 2-");
+    scanf("%d", &m2);
+    newnode->mark2 = m2;
+
+    printf("Enter Marks 3-");
+    scanf("%d", &m3);
+    newnode->mark3 = m3;
+
+    newnode->total = (m1 + m2 + m3);
+
+    newnode->avg = newnode->total / 3;
+
+    if (newnode->avg > 91)
     {
-        printf("\nOVERFLOW");
+        s++;
+        newnode->grade = 'S';
+    }
+    else if (newnode->avg > 81)
+    {
+        newnode->grade = 'A';
+    }
+    else if (newnode->avg > 71)
+    {
+        newnode->grade = 'B';
+    }
+    else if (newnode->avg > 61)
+    {
+        newnode->grade = 'C';
+    }
+    else if (newnode->avg > 51)
+    {
+        newnode->grade = 'D';
+    }
+    else if (newnode->avg >= 41)
+    {
+        newnode->grade = 'E';
+    }
+    else if (newnode->avg < 41)
+    {
+        newnode->grade = 'F';
+    }
+    else
+        newnode->grade = 'N';
+
+    n++;
+    ptr = head;
+    if (ptr == NULL)
+    {
+        counti++;
+        head = newnode;
     }
     else
     {
-        printf("Enter name, registeration number, marks1, marks2, marks3 \n");
-        scanf("%s %s %d %d %d", name, reg, &m1, &m2, &m3);
-        s1->stud_name = name;
-        s1->reg_num = reg;
-        s1->mark1 = m1;
-        s1->mark2 = m2;
-        s1->mark3 = m3;
-        if (head == NULL)
+        ptr = head;
+        int flag = 1;
+        while (ptr != NULL)
         {
-            s1->next = NULL;
-            head = s1;
+            if (strcmp(newnode->reg, ptr->reg) == 0)
+            {
+                printf("\n-Duplicate registration number\n");
+                flag = 0;
+
+                free(newnode);
+                break;
+            }
+            ptr = ptr->next;
         }
-        else
+        if (flag == 1)
         {
-            temp = head;
-            while (temp->next != NULL)
+            counti++;
+            ptr = head;
+            while (ptr->next != NULL)
             {
-                if (temp->reg_num == reg)
-                {
-                    flag = 1;
-                }
-                temp = temp->next;
+                ptr = ptr->next;
             }
-            if (flag == 0)
-            {
-                temp->next = s1;
-                s1->next = NULL;
-                printf("\nNode inserted");
-            }
-            else
-            {
-                printf("\nRegister number already exists");
-                free(s1);
-            }
+            newnode->prev = ptr;
+            ptr->next = newnode;
         }
     }
 }
-int readCurrentNode()
+
+void countgrade()
 {
-    struct student *temp1;
-    temp1 = head;
-    while (temp1->next != NULL)
+    ptr = head;
+    while (ptr->next != NULL)
     {
-        printf("\n NAME: %s", temp1->stud_name);
-        printf("\n REGISTERATION NUMBER %s", temp1->reg_num);
-        printf("\n TOTAL %d", temp1->total);
-        printf("\n AVERAGE %f", temp1->average);
-        temp1 = temp1->next;
+        if (ptr->grade == 'S')
+            s++;
+        else if (ptr->grade == 'A')
+            a++;
+        else if (ptr->grade == 'B')
+            b++;
+        else if (ptr->grade == 'C')
+            c++;
+        else if (ptr->grade == 'D')
+            d++;
+        else if (ptr->grade == 'E')
+            e++;
+        else if (ptr->grade == 'F')
+            f++;
+        ptr = ptr->next;
     }
+
+    printf("\n The grade count is as follows \n S-%d\n A-%d\n B-%d\n C-%d\n D-%d\n E-%d\n F-%d\n", s, a, b, c, d, e, f);
+}
+
+void display()
+{
+
+    ptr = head;
+    while (ptr != NULL)
+    {
+        printf("\nDisplaying Linked list\n");
+        printf("\nName:%s\n", ptr->stud_name);
+        printf("Reg No:%s\n", ptr->reg);
+        printf("Mark 1:%d\n", ptr->mark1);
+        printf("Mark 2:%d\n", ptr->mark2);
+        printf("Mark 3:%d\n", ptr->mark3);
+        printf("Total:%d\n", ptr->total);
+        printf("Average:%f\n", ptr->avg);
+
+        ptr = ptr->next;
+    }
+}
+
+void display2(struct student *j)
+{
+
+    ptr = j;
+    if (ptr == NULL)
+    {
+        printf("\nEmpty List\n");
+    }
+    else
+    {
+        while (ptr != NULL)
+        {
+
+            printf("\nName:%s\n", ptr->stud_name);
+            printf("Reg No:%s\n", ptr->reg);
+            printf("Mark 1:%d\n", ptr->mark1);
+            printf("Mark 2:%d\n", ptr->mark2);
+
+            printf("Mark 3:%d\n", ptr->mark3);
+            printf("Total:%d\n", ptr->total);
+            printf("Average:%f\n", ptr->avg);
+            printf("Grade:%c\n", ptr->grade);
+            printf("\n*********\n");
+            ptr = ptr->prev;
+        }
+    }
+}
+struct student *deleteF()
+{
+
+    p1 = head;
+    while (p1->next != NULL)
+        p1 = p1->next;
+    if (head->grade == 'F')
+    {
+        countd++;
+        printf("Reg No: %s is Deleted!", head->reg);
+        ptr = head;
+        head = head->next;
+        head->prev = NULL;
+        free(ptr);
+
+        return NULL;
+    }
+    else if (p1->grade == 'F')
+    {
+        printf("Reg No: %s is Deleted!", p1->reg);
+        p1->prev->next = NULL;
+        p = p1->prev;
+        free(p1);
+
+        return p;
+    }
+    else
+    {
+        ptr = head;
+        while (ptr->next != NULL)
+        {
+            if (ptr->grade == 'F')
+            {
+                printf("Reg No: %s is Deleted!", ptr->reg);
+                ptr = ptr->next;
+                p1->next = p2;
+                p2->prev = p1;
+                p = p1;
+            }
+            else
+                ptr = ptr->next;
+        }
+    }
+}
+int main()
+{
+    int size;
+
+    printf("Enter no of student records:\n");
+    scanf("%d", &size);
+    printf("\npart-a,part-c\n");
+
+    for (int i = 0; i < size; i++)
+    {
+        insert();
+        display();
+    }
+    countgrade();
+    printf("\npart-e,part-f\n");
+    struct student *s;
+    for (int i = 0; i < f; i++)
+    {
+        s = deleteF();
+        display2(s);
+    }
+
+    printf("\npart-d,part-g\n");
 }

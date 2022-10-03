@@ -1,43 +1,42 @@
-#include<stdio.h>
-void printArray(int *A ,int n){
-	int i;
-	for(i=0; i<n;i++){
-		printf(" %d ",A[i]);
-	}
-	printf("\n");	
-}
+// C program to implement iterative Binary Search
+#include <stdio.h>
 
-void bubbleSort(int *A,int n){
-	int temp;
-	int i;
-	int j;
-	for(i=0;i<n-1;i++){
-		for(j=0;j<n-1-i;j++){
-			if(A[j]>A[j+1]){
-				temp=A[j];
-				A[j]=A[j+1];
-				A[j+1]=temp;
-			}
-			
-		}
-	}
-}
-
-int main()
+// A iterative binary search function. It returns
+// location of x in given array arr[l..r] if present,
+// otherwise -1
+int binarySearch(int arr[], int l, int r, int x)
 {
-	int n,i;
-	printf("Enter the size of ARRAY\n");
-	scanf("%i",&n);
+	while (l <= r) {
+		int m = l + (r - l) / 2;
 
-	int A[n];
+		// Check if x is present at mid
+		if (arr[m] == x)
+			return m;
 
-	printf("Enter the element of array\n");
-	for(i=0;i<n;i++)
-	scanf("%i",&A[i]);
+		// If x greater, ignore left half
+		if (arr[m] < x)
+			l = m + 1;
 
-	printArray(A,n);
-	bubbleSort(A,n);
-	printArray(A,n);
-	
+		// If x is smaller, ignore right half
+		else
+			r = m - 1;
+	}
+
+	// if we reach here, then element was
+	// not present
+	return -1;
+}
+
+int main(void)
+{
+	int arr[] = { 2, 3, 4, 10, 40 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int x = 10;
+	int result = binarySearch(arr, 0, n - 1, x);
+	(result == -1) ? printf("Element is not present"
+							" in array")
+				: printf("Element is present at "
+							"index %d",
+							result);
 	return 0;
 }

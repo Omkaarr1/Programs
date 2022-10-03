@@ -42,11 +42,8 @@ int main()
         }
     }
 
-    
-
     for(int i=0;i<M;i++)
     cout<<NDir[i]<<endl;
-
 
    return 0;
 }
