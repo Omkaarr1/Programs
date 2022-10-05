@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Teacher
+comment0.text=TEACHER\ CLASS
+comment1.params=
+comment1.target=Teacher()
+comment2.params=
+comment2.target=void\ displayTeacher()
+comment3.params=
+comment3.target=void\ inputTeacher()
+numComments=4

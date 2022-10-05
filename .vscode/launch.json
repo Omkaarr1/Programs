@@ -1,6 +1,13 @@
 {
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch ComplexArethemiticDemo",
+            "request": "launch",
+            "mainClass": "ComplexArethemiticDemo",
+            "projectName": "git.lib_83ebc2ef"
+        },
+        {
             "name": "C/C++: gcc.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
