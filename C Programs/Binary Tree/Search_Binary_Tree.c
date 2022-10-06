@@ -83,14 +83,37 @@ struct node* deleteNode(struct node* root, int data)
 	return root;
 }
 
+void searching(struct node *root)
+{
+    int item;
+    printf("Enter item to be Searched -->\n");
+    scanf("%i",&item);
+
+    for(;root->left!=NULL && root->right != NULL;)
+    {
+        if(root->data>item)
+        root=root->left;
+        else if(root->data<item)
+        root=root->right;
+        
+        if(item == root->data)
+        {
+            printf("Element found in the Tree!!\n");
+            return;
+        }
+    }
+
+    printf("Element Not found in the Tree!!\n");
+}
+
 int main()
 {
 	/* Let us create following BST
 			50
-		/	 \
-		30	 70
-		/ \ / \
-	20 40 60 80 */
+		  /	   \
+		30      70
+	    / \    /  \
+	   20 40  60  80 */
 	struct node* root = NULL;
 	root = insert(root, 50);
 	root = insert(root, 30);
@@ -103,8 +126,10 @@ int main()
 	printf("Inorder traversal of the given tree \n");
 	inorder(root);
 
-    printf("Minimum Value --> %i\n",minValueNode(root));
-    printf("Maximum Value --> %i\n",maxValueNode(root));
+    printf("\n\n");
+
+    printf("Minimum Value --> %i\n",minValueNode(root)->data);
+    printf("Maximum Value --> %i\n",maxValueNode(root)->data);
 
 	printf("\nDelete 20\n");
 	root = deleteNode(root, 20);
@@ -120,8 +145,10 @@ int main()
 	root = deleteNode(root, 50);
 	printf("Inorder traversal of the modified tree \n");
 	inorder(root);
+    
+    printf("\n\n");
 
-
+    searching(root);
 
 	return 0;
 }
