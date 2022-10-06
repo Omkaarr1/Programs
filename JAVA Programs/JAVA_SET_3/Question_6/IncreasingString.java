@@ -1,6 +1,5 @@
 package Question_6;
 
-
 //INCREASING STRING CLASS
 
 import java.util.*;
