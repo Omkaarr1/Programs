@@ -56,7 +56,6 @@ struct node* maxValueNode(struct node* node)
 	return current;
 }
 
-
 struct node* deleteNode(struct node* root, int data)
 {
 	if (root == NULL)
@@ -91,16 +90,26 @@ void searching(struct node *root)
 
     for(;root->left!=NULL && root->right != NULL;)
     {
-        if(root->data>item)
-        root=root->left;
-        else if(root->data<item)
-        root=root->right;
-        
         if(item == root->data)
         {
             printf("Element found in the Tree!!\n");
             return;
         }
+        if(root->data>item)
+        root=root->left;
+        else if(root->data<item)
+        root=root->right;
+    }
+
+    if(root->data>item)
+    root=root->left;
+    else if(root->data<item)
+    root=root->right;
+
+    if(item == root->data)
+    {
+        printf("Element found in the Tree!!\n");
+        return;
     }
 
     printf("Element Not found in the Tree!!\n");
