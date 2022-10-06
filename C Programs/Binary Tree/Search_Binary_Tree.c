@@ -8,8 +8,7 @@ struct node {
 
 struct node* newNode(int item)
 {
-	struct node* temp
-		= (struct node*)malloc(sizeof(struct node));
+	struct node* temp = (struct node*)malloc(sizeof(struct node));
 	temp->data = item;
 	temp->left = temp->right = NULL;
 	return temp;
@@ -27,12 +26,13 @@ void inorder(struct node* root)
 struct node* insert(struct node* node, int data)
 {
 	if (node == NULL)
-		return newNode(data);
+	return newNode(data);
 
 	if (data < node->data)
-		node->left = insert(node->left, data);
+	node->left = insert(node->left, data);
 	else
-		node->right = insert(node->right, data);
+	node->right = insert(node->right, data);
+
 	return node;
 }
 
