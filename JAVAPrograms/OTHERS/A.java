@@ -4,7 +4,7 @@ import javax.lang.model.util.ElementScanner14;
 
 class A
 {
-	public static void main (String[] args) throws java.lang.Exception
+	protected static void main (String[] args) throws java.lang.Exception
 	{
 	    Scanner in = new Scanner(System.in);
 	    int T = in.nextInt();
@@ -30,4 +30,7 @@ class A
             System.out.println("Alice");
         }
 	}
+
+    public void display() {
+    }
 }

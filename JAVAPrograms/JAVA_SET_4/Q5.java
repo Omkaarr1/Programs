@@ -48,7 +48,7 @@ class Q5
 
     public static void main(String[] args) 
     {
-        Q6 a = new Q6();
+        Q5 a = new Q5();
         
         for(;;)
         {

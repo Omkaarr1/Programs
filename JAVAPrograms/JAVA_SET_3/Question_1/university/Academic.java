@@ -1,6 +1,6 @@
 package Question_1.university;
 import java.util.*;
-import school.*;
+import Question_1.school.*;
 
 public class Academic
 {
