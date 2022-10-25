@@ -1,4 +1,3 @@
-package LOGIN;
 import java.util.*;
 
 public class IDPassword 
@@ -7,7 +6,7 @@ public class IDPassword
 
     IDPassword()
     {
-        loginInfo.put("bro","CODE");
+        loginInfo.put("0","0");
     }
 
     protected HashMap<String, String> getLoginInfo() {

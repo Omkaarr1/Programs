@@ -1,8 +1,5 @@
-package LOGIN;
 import java.util.*;
 import javax.swing.*;
-
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +19,12 @@ public class Login implements ActionListener
     JLabel userPasswordlable = new JLabel("USER PASSWORD");
     JLabel messageLabel = new JLabel("LOGIN PAGE");    
     JLabel lable = new JLabel("Account Successfully Created");
+    static boolean get_Moderator=false,get_User=false;
 
+    Login()
+    {
+
+    }
 
     Login(HashMap<String,String> logininfoOriginal)
     {
@@ -67,6 +69,18 @@ public class Login implements ActionListener
         frame.setVisible(true);
     }
 
+    void set_Moderator()
+    {
+        get_Moderator = true;
+    }
+
+    void set_User()
+    {
+        get_User = true;
+    }
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -87,8 +101,17 @@ public class Login implements ActionListener
                 {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login Successfull");
-                    Welcome a = new Welcome();
-                    a.activate();
+
+                    if(get_Moderator)
+                    {
+                        new Moderator().Continue(frame);
+                        get_Moderator = false;
+                    }
+                    else if(get_User)
+                    {
+                        new User().Continue(frame);
+                        get_User = false;
+                    }
                 }
                 else
                 {
