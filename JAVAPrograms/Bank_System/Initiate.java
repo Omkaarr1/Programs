@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class Initiate implements ActionListener
@@ -30,12 +29,12 @@ public class Initiate implements ActionListener
     {
         if(e.getSource() == button1)
         {
-            Moderator m = new Moderator();
-            m=new Moderator(frame);
+            new Moderator();
+            new Moderator(frame);
         }
         else if(e.getSource() == button2)
         {
-            User u = new User(frame);
+            new User(frame);
         }
     }
 }

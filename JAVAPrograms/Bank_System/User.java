@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
 
@@ -34,7 +33,7 @@ public class User implements ActionListener
     {
         if(e.getSource() == b)
         {
-            ContinueUser u = new ContinueUser();
+            new ContinueUser();
         }
     }
 }

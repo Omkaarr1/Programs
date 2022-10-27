@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class ContinueModerator implements ActionListener
@@ -52,35 +51,35 @@ public class ContinueModerator implements ActionListener
     {
         if(e.getSource() == setBankIntrest && SBI.getText()!=null)
         {
-            c.bankIntrest = Double.valueOf(SBI.getText());
+            Calculations.bankIntrest = Double.valueOf(SBI.getText());
         }
         else
         {
-            c.bankIntrest = 25;
+            Calculations.bankIntrest = 25;
         }
 
         if(e.getSource() == setGST && SGST.getText()!=null)
         {
-            c.bankGST = Double.valueOf(SGST.getText());
+            Calculations.bankGST = Double.valueOf(SGST.getText());
         }
         else
         {
-            c.bankGST = 18;
+            Calculations.bankGST = 18;
         } 
 
         if(e.getSource() == setMaxDeposit && SMD.getText()!=null)
         {
-            c.bankMaxDeposit = Double.valueOf(SMD.getText());
+            Calculations.bankMaxDeposit = Double.valueOf(SMD.getText());
         }
         else
         {
-            c.bankMaxDeposit = 100000;
+            Calculations.bankMaxDeposit = 100000;
         }
 
         if(e.getSource() == done)
         {
             frame.dispose();
-            Initiate i = new Initiate();
+            new Initiate();
         }
     }
 }

@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
 
@@ -37,7 +36,7 @@ public class Moderator implements ActionListener
         if(e.getSource() == b)
         {
             frame.dispose();
-            ContinueModerator m = new ContinueModerator();
+            new ContinueModerator();
         }
     }
 }
