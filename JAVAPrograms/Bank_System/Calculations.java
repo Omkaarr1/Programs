@@ -1,6 +1,6 @@
 public class Calculations 
 {
-    double bankIntrest,bankGST,bankMaxDeposit,Balance;
+    static double bankIntrest,bankGST,bankMaxDeposit,Balance;
     
     Calculations()
     {

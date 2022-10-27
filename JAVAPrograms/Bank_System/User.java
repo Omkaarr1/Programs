@@ -16,7 +16,6 @@ public class User implements ActionListener
         frame.dispose();
         Login i = new Login();
         i.set_User();
-        System.out.println(i.get_User);
         i = new Login(loginInfo);
     }
 
