@@ -5,13 +5,13 @@ public class Question6
 {
 public static void main(String[] args) 
 {
-Scanner in = new Scanner(System.in);
-
-System.out.println("Enter the Number");
-int decimal = in.nextInt();;
-
-int octal = convertDecimalToOctal(decimal);
-System.out.printf("%d in decimal = %d in octal", decimal, octal);
+try (Scanner in = new Scanner(System.in)) {
+    System.out.println("Enter the Number");
+    int decimal = in.nextInt();;
+    
+    int octal = convertDecimalToOctal(decimal);
+    System.out.printf("%d in decimal = %d in octal", decimal, octal);
+}
 }
 
 public static int convertDecimalToOctal(int decimal)

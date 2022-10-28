@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 class Employee 
@@ -31,13 +30,14 @@ public class practice
 {
     public static void main(String[] args) 
     {
-        Scanner sc = new Scanner(System.in);
-        int i;
-        int n = sc.nextInt();
-        Employee[] e = new Employee[n];
-        for (i = 0; i < n; i++) {
-            e[i].read();
-            e[i].display();
+        try (Scanner sc = new Scanner(System.in)) {
+            int i;
+            int n = sc.nextInt();
+            Employee[] e = new Employee[n];
+            for (i = 0; i < n; i++) {
+                e[i].read();
+                e[i].display();
+            }
         }
     }
 }

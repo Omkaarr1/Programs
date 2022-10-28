@@ -9,21 +9,21 @@ public class Question13
 {
 public static void main(String[] args)
 {
-    Scanner in = new Scanner(System.in);
-
-int x,y,p;
-
-System.out.println("Enter Start Value -->");
-x=in.nextInt();
-
-System.out.println("Enter Enter Value -->");
-y=in.nextInt();
-
-System.out.println("Enter The Dividend -->");
-p=in.nextInt();
-
-for(int i=x;i<=y;i++)
-if(i%p==0)
-System.out.print(i+" ");
+    try (Scanner in = new Scanner(System.in)) {
+        int x,y,p;
+        
+        System.out.println("Enter Start Value -->");
+        x=in.nextInt();
+        
+        System.out.println("Enter Enter Value -->");
+        y=in.nextInt();
+        
+        System.out.println("Enter The Dividend -->");
+        p=in.nextInt();
+        
+        for(int i=x;i<=y;i++)
+        if(i%p==0)
+        System.out.print(i+" ");
+    }
 }
 }

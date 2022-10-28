@@ -7,14 +7,14 @@ import java.util.*;
 public class Question18 {
 public static void main(String[] args)
 {
-Scanner in = new Scanner(System.in);
-
-System.out.println("Enter the First String");
-String str1 = in.nextLine();
-
-System.out.println("Enter the Second String");
-String str2 = in.nextLine();
-
-System.out.println(str1.substring(1) + str2.substring(1));
+try (Scanner in = new Scanner(System.in)) {
+    System.out.println("Enter the First String");
+    String str1 = in.nextLine();
+    
+    System.out.println("Enter the Second String");
+    String str2 = in.nextLine();
+    
+    System.out.println(str1.substring(1) + str2.substring(1));
+}
 }
 }

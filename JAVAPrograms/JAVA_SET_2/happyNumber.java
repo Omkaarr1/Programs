@@ -3,28 +3,29 @@ public class happyNumber
 {
     public static void main(String args[]) 
     {
-        Scanner in = new Scanner(System.in);
-        int n,temp,sum;
+        try (Scanner in = new Scanner(System.in)) {
+            int n,temp,sum;
 
-        System.out.println("Enter A Number");
-        n=in.nextInt();
+            System.out.println("Enter A Number");
+            n=in.nextInt();
 
-        while(n>=9)
-        {
-            temp = n;
-            sum=0;
-            while(temp>0)
+            while(n>=9)
             {
-                sum+=(int)(Math.pow(temp%10,2));
-                temp/=10;
+                temp = n;
+                sum=0;
+                while(temp>0)
+                {
+                    sum+=(int)(Math.pow(temp%10,2));
+                    temp/=10;
+                }
+                n=sum;
             }
-            n=sum;
-        }
 
-        if(n==1)
-        System.out.println("Happy Number");
-        else
-        System.out.println("Not a Happy Number");
+            if(n==1)
+            System.out.println("Happy Number");
+            else
+            System.out.println("Not a Happy Number");
+        }
 
     }
 }

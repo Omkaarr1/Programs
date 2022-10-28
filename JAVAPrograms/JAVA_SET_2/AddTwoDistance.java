@@ -6,12 +6,12 @@ class Distance {
   private int inches;
 
   public void getDistance() {
-    Scanner sc = new Scanner(System.in);
-
-    System.out.print("Enter feet: ");
-    feet = sc.nextInt();
-    System.out.print("Enter inches: ");
-    inches = sc.nextInt();
+    try (Scanner sc = new Scanner(System.in)) {
+      System.out.print("Enter feet: ");
+      feet = sc.nextInt();
+      System.out.print("Enter inches: ");
+      inches = sc.nextInt();
+    }
   }
 
   public void showDistance() {
