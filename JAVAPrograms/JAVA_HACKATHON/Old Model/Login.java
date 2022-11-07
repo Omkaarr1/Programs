@@ -1,7 +1,5 @@
 import java.util.*;
 import javax.swing.*;
-
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,8 +7,8 @@ import java.awt.event.ActionListener;
 public class Login implements ActionListener
 {
     HashMap<String,String> Logininfo = new HashMap<String,String>();
-    JFrame frame = new JFrame();
-    JFrame frame2 = new JFrame();
+    JFrame frame = new Tools().frame();
+    JFrame frame2 = new Tools().frame();
     JButton loginButton = new JButton("Login");
     JButton resetButton = new JButton("Reset");
     JButton createButton = new JButton("Create Account");
@@ -21,9 +19,13 @@ public class Login implements ActionListener
     JLabel userPasswordlable = new JLabel("USER PASSWORD");
     JLabel messageLabel = new JLabel("LOGIN PAGE");    
     JLabel lable = new JLabel("Account Successfully Created");
-    public char[] get_Moderator;
-    public char[] get_User;
 
+    static boolean get_Moderator=false,get_User=false;
+
+    Login()
+    {
+
+    }
 
     Login(HashMap<String,String> logininfoOriginal)
     {
@@ -60,13 +62,18 @@ public class Login implements ActionListener
         frame.add(loginButton);
         frame.add(resetButton);
         frame.add(createButton);
-
-      
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420,420);
-        frame.setLayout(null);
-        frame.setVisible(true);
     }
+
+    void set_Moderator()
+    {
+        get_Moderator = true;
+    }
+
+    void set_User()
+    {
+        get_User = true;
+    }
+
 
 
     @Override
@@ -89,8 +96,17 @@ public class Login implements ActionListener
                 {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login Successfull");
-                    Welcome a = new Welcome(Logininfo,frame);
-                    a.activate();
+
+                    if(get_Moderator)
+                    {
+                        new Moderator().Continue(frame);
+                        get_Moderator = false;
+                    }
+                    else if(get_User)
+                    {
+                        new User().Continue(frame);
+                        get_User = false;
+                    }
                 }
                 else
                 {
@@ -145,23 +161,5 @@ public class Login implements ActionListener
         frame2.add(userID);
         frame2.add(userPass);
         frame2.add(submit);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame2.setSize(420,420);
-        frame2.setLayout(null);
-        frame2.setVisible(true);
-
-    }
-
-    public boolean activate(HashMap<String, String> logininfo2) {
-        return false;
-    }
-
-    public void set_Moderator(boolean b) {
-    }
-
-    public void set_Moderator() {
-    }
-
-    public void set_User() {
     }
 }

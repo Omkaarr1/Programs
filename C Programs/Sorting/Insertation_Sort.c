@@ -1,40 +1,43 @@
+// C program for insertion sort
+#include <math.h>
 #include <stdio.h>
 
-void display(int[],int);
-
-int main()
+/* Function to sort an array using insertion sort*/
+void insertionSort(int arr[], int n)
 {
-    int n,temp,k;
-    
-    printf("Enter Elements in the Array -->\n");
-    scanf("%i",&n);
+	int i, key, j;
+	for (i = 1; i < n; i++) {
+		key = arr[i];
+		j = i - 1;
 
-    int A[n];
-
-    printf("Enter the Elements of the Array -->\n");
-    
-    for(int i=0;i<n;i++)
-    scanf("%i",&A[i]);
-
-    for(int i=0;i<n;i++)
-    for(int j=0;j<i;j++)
-    {
-        if(A[i]<A[j])
-        {
-            temp=A[i];
-            for(k=i;k>j;A[k]=A[k-1],k--);
-            A[k]=temp;
-            break;
-        }
-    }
-
-    display(A,n);
-
-    return 0;
+		/* Move elements of arr[0..i-1], that are
+		greater than key, to one position ahead
+		of their current position */
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j = j - 1;
+		}
+		arr[j + 1] = key;
+	}
 }
 
-void display(int A[],int n)
+// A utility function to print an array of size n
+void printArray(int arr[], int n)
 {
-    for(int i=0;i<n;i++)
-    printf("%i ",A[i]);
+	int i;
+	for (i = 0; i < n; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+}
+
+/* Driver program to test insertion sort */
+int main()
+{
+	int arr[] = { 12, 11, 13, 5, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	insertionSort(arr, n);
+	printArray(arr, n);
+
+	return 0;
 }

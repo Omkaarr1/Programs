@@ -2,19 +2,20 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.HashMap;
 
-public class User implements ActionListener
+public class Moderator implements ActionListener
 {
     JButton b;
+    JFrame frame;
     HashMap<String,String> loginInfo = new HashMap<String,String>();
-
-    User()
-    {}
     
-    User(JFrame frame)
+    Moderator()
+    {}
+
+    Moderator(JFrame frame)
     {
         frame.dispose();
         Login i = new Login();
-        // i.set_User();
+        // i.set_Moderator();
         i = new Login(loginInfo);
     }
 
@@ -26,6 +27,7 @@ public class User implements ActionListener
         b.addActionListener(this);
 
         frame.add(b);
+        this.frame = frame;
     }
 
     @Override
@@ -33,7 +35,8 @@ public class User implements ActionListener
     {
         if(e.getSource() == b)
         {
-            new ContinueUser();
+            frame.dispose();
+            new ContinueModerator();
         }
     }
 }

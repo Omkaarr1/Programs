@@ -15,7 +15,7 @@ public class Moderator implements ActionListener
     {
         frame.dispose();
         Login i = new Login();
-        i.set_Moderator();
+        // i.set_Moderator();
         i = new Login(loginInfo);
     } 
 

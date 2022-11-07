@@ -22,7 +22,6 @@ public class Welcome implements ActionListener
         OriginalFrame = frame;
     }
 
-
     void activate()
     {
         welcomeLable.setBounds(0,0,150,150);

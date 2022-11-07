@@ -1,39 +1,35 @@
+// Shell Sort in C programming
+
 #include <stdio.h>
 
-void display(int[],int);
-
-int main()
-{
-    int n,temp,k;
-    
-    printf("Enter Elements in the Array -->\n");
-    scanf("%i",&n);
-
-    int A[n];
-
-    printf("Enter the Elements of the Array -->\n");
-    
-    for(int i=0;i<n;i++)
-    scanf("%i",&A[i]);
-
-    k=(int)((n/2)-1);
-
-    for(;k>0;k--)
-    for(int i=0;i,n;i+=k)
-    if(A[i]>A[i+k])
-    {
-        temp=A[i];
-        A[i+k]=A[i];
-        A[i]=temp;
-    }    
-
-    display(A,n);
-
-    return 0;
+// Shell sort
+void shellSort(int array[], int n) {
+  // Rearrange elements at each n/2, n/4, n/8, ... intervals
+  for (int interval = n / 2; interval > 0; interval /= 2) {
+    for (int i = interval; i < n; i += 1) {
+      int temp = array[i];
+      int j;
+      for (j = i; j >= interval && array[j - interval] > temp; j -= interval) {
+        array[j] = array[j - interval];
+      }
+      array[j] = temp;
+    }
+  }
 }
 
-void display(int A[],int n)
-{
-    for(int i=0;i<n;i++)
-    printf("%i ",A[i]);
+// Print an array
+void printArray(int array[], int size) {
+  for (int i = 0; i < size; ++i) {
+    printf("%d  ", array[i]);
+  }
+  printf("\n");
+}
+
+// Driver code
+int main() {
+  int data[] = {9, 8, 3, 7, 5, 6, 4, 1};
+  int size = sizeof(data) / sizeof(data[0]);
+  shellSort(data, size);
+  printf("Sorted array: \n");
+  printArray(data, size);
 }

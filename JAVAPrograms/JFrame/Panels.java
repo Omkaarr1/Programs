@@ -3,6 +3,7 @@ import java.awt.LayoutManager;
 import java.lang.ProcessBuilder.Redirect;
 import javax.swing.*;
 import javax.swing.plaf.BorderUIResource;
+
 public class Panels 
 {
     public static void main(String[] args) 
@@ -31,8 +32,9 @@ public class Panels
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
-        frame.setSize(750,750);
+        frame.setSize(550,550);
         frame.setVisible(true);
+
         frame.add(panel_red);
         panel_red.add(lable);
         frame.add(panel_blue);
