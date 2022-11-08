@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch hellow",
+            "request": "launch",
+            "mainClass": "hellow",
+            "projectName": "git.lib_83ebc2ef"
+        },
+        {
+            "type": "java",
+            "name": "Launch arraysmul",
+            "request": "launch",
+            "mainClass": "arraysmul",
+            "projectName": "git.lib_83ebc2ef"
+        },
+        {
+            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Main",
