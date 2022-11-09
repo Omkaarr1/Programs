@@ -41,5 +41,7 @@ public class practice
             printArray(A);
             temp=0;
         }
+
+        in.close();
     }
 }

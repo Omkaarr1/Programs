@@ -2,6 +2,9 @@
 #include <math.h>
 #include <stdio.h>
 
+void insertionSort(int[],int);
+void printArray(int[],int);
+
 /* Function to sort an array using insertion sort*/
 void insertionSort(int arr[], int n)
 {
@@ -18,6 +21,7 @@ void insertionSort(int arr[], int n)
 			j = j - 1;
 		}
 		arr[j + 1] = key;
+		printArray(arr,n);
 	}
 }
 
@@ -33,7 +37,7 @@ void printArray(int arr[], int n)
 /* Driver program to test insertion sort */
 int main()
 {
-	int arr[] = { 12, 11, 13, 5, 6 };
+	int arr[] = { 34,8,64,51,32,21 };
 	int n = sizeof(arr) / sizeof(arr[0]);
 
 	insertionSort(arr, n);

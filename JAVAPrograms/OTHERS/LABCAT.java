@@ -1,11 +1,11 @@
 import java.util.*;
-class A
+class LABCAT
 {
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
 
-        String line; 
+        String line;
         char ch;
 
         line = in.nextLine();
@@ -19,18 +19,5 @@ class A
                 System.out.println("Exception");
             }
         }
-
-        for(int i=0;i<line.length();i++)
-        {
-            ch = line.charAt(i);
-            if(!Character.isLetterOrDigit(ch) && i==line.length()-1)
-            {
-                // Throw Exception
-                System.out.println("Exception");
-            }
-        }
-
-        String x = "4glsjflkskljm";
-        char chh[] = x.toCharArray();
     }
 }
