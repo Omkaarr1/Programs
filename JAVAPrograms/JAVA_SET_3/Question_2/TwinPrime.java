@@ -1,12 +1,10 @@
-package Question_2;
-
 //TwinPrime Class
-import Question_2.primespackage.*;
+import primespackage.*;
 import java.util.*;
 
 class TwinPrime
 {
-    static void main()
+    public static void main(String args[])
     {
         Prime P = new Prime();
         Scanner in = new Scanner(System.in);

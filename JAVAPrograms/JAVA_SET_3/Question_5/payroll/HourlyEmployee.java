@@ -37,7 +37,8 @@ public class HourlyEmployee extends Employee
         }else
             throw new IllegalArgumentException("Hour must be >=0.0 and <=168"); //work hour per week 7*24hrs
     }
-    public double earnings() {
+    public double earnings() 
+    {
         if(getHours() <= 40)
         {
             return getWage()*getHours();

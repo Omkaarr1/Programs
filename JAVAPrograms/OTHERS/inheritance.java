@@ -35,8 +35,6 @@ public class inheritance
 
         ObjectInputStream objRead = new ObjectInputStream(new FileInputStream(file));
         j = (inherti) objRead.readObject();
-
-        System.out.println(j.x);
         
     }    
 }

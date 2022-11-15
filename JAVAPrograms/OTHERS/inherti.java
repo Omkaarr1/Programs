@@ -1,10 +1,26 @@
-import java.io.Serializable;
+import java.util.ArrayList;
 
-public class inherti implements Serializable
+/**
+ * L_Q3
+ */
+public class inherti
 {
-    int x = 10;
-    void print()
+    public static void main(String[] args) 
     {
-        System.out.println("Hello World");
+        ArrayList list = new ArrayList<Integer>();
+        Integer i = 1;
+
+        list.add(i);
+        list.add(i);
+        list.add(i);
+        list.add(i);
+        list.add(i);
+        list.add(i);
+
+        for (Object object : list) 
+        {
+            System.out.println(object);    
+        }
+
     }    
 }

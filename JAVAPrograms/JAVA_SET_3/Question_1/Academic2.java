@@ -1,6 +1,6 @@
 package Question_1;
 
-import Question_1.university.*;
+import university.*;
 class Academic2
 {
     public static void main(String args[])

@@ -1,8 +1,4 @@
-package Question_3;
-
-//CALCULATOR DEMO CLASS
-
-import Question_3.calculator.*;
+import calculator.*;
 
 public class calculatorDemo
 {

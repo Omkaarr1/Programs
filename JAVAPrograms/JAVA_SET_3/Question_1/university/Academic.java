@@ -1,20 +1,18 @@
 package Question_1.university;
 import java.util.*;
-import Question_1.school.*;
+import school.*;
 
 public class Academic
 {
     String RegisterNumber, EmpID;
     Scanner in = new Scanner(System.in);
-    Student S = new Student();
-    Teacher T = new Teacher();
 
     public Academic() 
     {
         EmpID = RegisterNumber = "";
     }
 
-    public void input() 
+    public void input(Student S,Teacher T) 
     {
         S.inputStudent();
 
@@ -29,6 +27,10 @@ public class Academic
 
     public void display() 
     {
+        Student S = new Student();
+        Teacher T = new Teacher();
+        
+        input(S,T);
         S.displayStudent();
         System.out.println("Register Number --> " + RegisterNumber);
 

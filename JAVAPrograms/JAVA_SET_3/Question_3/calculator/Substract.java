@@ -1,5 +1,5 @@
 //SUBSTRACTION CLASS
-package Question_3.calculator;
+package calculator;
 import java.util.*;
 
 public class Substract

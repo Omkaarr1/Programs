@@ -1,5 +1,6 @@
 package Question_6;
 
+
 // INCREASING NUMBER CLASS
 
 import java.util.*;

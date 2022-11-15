@@ -17,7 +17,6 @@ class Circle extends Shapes
         
         return "";
     }
-    
     String calcPerimeter()
     {
         double r,P=0.0;

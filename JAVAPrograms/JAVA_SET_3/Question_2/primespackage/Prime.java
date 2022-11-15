@@ -1,4 +1,4 @@
-package Question_2.primespackage;
+package primespackage;
 //Prime Class
 public class Prime
 {
