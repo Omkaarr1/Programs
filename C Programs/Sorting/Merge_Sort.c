@@ -82,7 +82,32 @@ void printArray(int A[], int size)
 /* Driver code */
 int main()
 {
-	int arr[] = { 12, 11, 13, 5, 6, 7 };
+	int n1,n2;
+
+	printf("Enter Length of 1st Array -->\n");
+	scanf("%i",&n1);
+	
+	printf("Enter Length of 2st Array -->\n");
+	scanf("%i",&n2);
+	
+	int A[n1],B[n2],arr[n1+n2];
+
+	printf("Enter Elements of 1st Array -->\n");
+	for(int i=0;i<n1;i++)
+	scanf("%i",&A[i]);
+
+	printf("Enter Elements of 2st Array -->\n");
+	for(int i=0;i<n2;i++)
+	scanf("%i",&B[i]);
+
+	int i=0;
+
+	for(i=0;i<n1;i++)
+	arr[i] = A[i];
+
+	for(int j=0;j<n2;j++,i++)
+	arr[i] = B[j];
+
 	int arr_size = sizeof(arr) / sizeof(arr[0]);
 
 	printf("Given array is \n");

@@ -6,6 +6,7 @@
         "EVALUATION_OF_PREFIX.C": "cpp",
         "new": "cpp",
         "iostream": "cpp",
-        "regex": "c"
+        "regex": "c",
+        "DSA_LAB_FAT.C": "cpp"
     }
 }
