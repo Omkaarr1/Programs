@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch file",
+            "request": "launch",
+            "mainClass": "file",
+            "projectName": "git.lib_83ebc2ef"
+        },
+        {
+            "type": "java",
             "name": "Launch hellow",
             "request": "launch",
             "mainClass": "hellow",
